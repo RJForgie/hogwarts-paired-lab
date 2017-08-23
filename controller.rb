@@ -13,11 +13,6 @@ get '/students' do
   erb(:index)
 end
 
-# get '/houses' do
-#   @houses = House.all()
-#   erb(:index)
-# end
-
 #new student route
 
 get '/students/new' do
@@ -27,6 +22,7 @@ end
 
 #create route
 post '/students' do
+  puts "PARAMS #{params}"
   @student = Student.new(params)
   @student.save
   erb(:create)

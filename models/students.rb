@@ -4,8 +4,8 @@ require_relative('../db/sqlrunner.rb')
 
 
 class Student
-attr_accessor(:first_name, :second_name, :age)
-attr_reader(:id, :house_id)
+attr_accessor(:first_name, :second_name, :age, :house_id)
+attr_reader(:id)
 def initialize ( student )
   @id = student['id'].to_i()
   @first_name = student['first_name']
