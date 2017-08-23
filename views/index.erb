@@ -1,4 +1,4 @@
-<h1>all students </h1>
+<h1>All students </h1>
 
 
 
@@ -8,6 +8,15 @@
 <p>Second Name: <%= student.second_name %></p>
 <p>Age: <%= student.age %></p>
 <p>House: <%= student.which_house.name %>
+
+  <form action="/students/<%= student.id %>/edit" method="get">
+    <input type="submit" class="button" value="Edit Student"/>
+  </form>
+
+  <form action="/students/<%= student.id %>/delete" method="POST">
+    <input type="submit" class="button" value="Remove student"/>
+  </form>
+
 <hr/>
 
 

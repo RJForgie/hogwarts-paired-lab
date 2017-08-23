@@ -3,27 +3,57 @@ require('sinatra/contrib/all')
 require('pry-byebug')
 require_relative('./models/students.rb')
 require_relative('./models/house.rb')
-# require_relative('db/seeds.rb')
 
 
-#this is the index route
+get '/' do
+  erb(:home)
+end
+
+#INDEX route
 
 get '/students' do
   @students = Student.all()
   erb(:index)
 end
 
-#new student route
+#NEW route
 
 get '/students/new' do
   @houses = House.all()
   erb(:new)
 end
 
-#create route
+# SHOW route
+get '/students/:id' do
+  @student = Student.find( params[:id] )
+  @houses = House.all()
+  erb(:show)
+end
+
+#CREATE route
 post '/students' do
-  puts "PARAMS #{params}"
   @student = Student.new(params)
   @student.save
   erb(:create)
+end
+
+# DELETE route
+post '/students/:id/delete' do
+  @student = Student.find(params[:id])
+  @student.delete
+  redirect to '/students'
+end
+
+# EDIT route
+get '/students/:id/edit' do
+  @houses = House.all()
+  @student = Student.find( params[:id] )
+  erb(:edit)
+end
+
+# UPDATE route
+post '/students/:id' do
+  student = Student.new(params)
+  student.update()
+  redirect to "/students/#{params['id']}"
 end
