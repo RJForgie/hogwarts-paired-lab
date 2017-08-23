@@ -6,12 +6,16 @@
   <label for="second-name-field">Second Name:</label>
   <input id="second-name-field" type="text" name="second_name">
 
+
+
+
+
+
   <label for="house-select">Select a house:</label>
   <select id="house-select" name="house">
-     <option value="Gryffindor">Gryffindor</option>
-     <option value="Slytherrin">Slytherrin</option>
-     <option value="Ravenclaw">Ravenclaw</option>
-     <option value="Hufflepuff">Hufflepuff</option>
+     <% for house in @houses do %>
+     <option value="<%= house.name %>"><%= house.name %></option>
+     <% end %>
   </select>
 
  <label for="age">Age:</label>
